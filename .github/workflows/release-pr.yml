@@ -4,7 +4,7 @@
 name: Create a release PR for .NET app
 
 on:
-  pull_request:
+  push:
     branches: [ "main" ]
 
 defaults:
