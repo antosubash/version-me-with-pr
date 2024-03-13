@@ -4,8 +4,6 @@
 name: Create a release PR for .NET app
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -28,11 +26,15 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 18
     - name: Semantic Release
       uses: cycjimmy/semantic-release-action@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
+        branch: main
         extra_plugins: |
           @semantic-release/git
           @semantic-release/exec
