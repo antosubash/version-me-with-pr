@@ -30,12 +30,12 @@ jobs:
       with:
         node-version: 18
     - name: Semantic Release
-      uses: cycjimmy/semantic-release-action@v2
+      uses: cycjimmy/semantic-release-action@v3
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        branch: main
+        semantic_version: 19.0.5
         extra_plugins: |
-          @semantic-release/git
-          @semantic-release/exec
           @semantic-release/changelog
+          @semantic-release/git
+          @google/semantic-release-replace-plugin@1.2.0
